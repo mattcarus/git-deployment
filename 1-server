@@ -1,0 +1,11 @@
+#!/bin/bash
+cd /var
+mkdir repo && cd repo
+mkdir site.git && cd site.git
+git init --bare
+cd hooks
+cat <<'EOF' >> post-receive
+#!/bin/sh
+git --work-tree=/var/www/site --git-dir=/var/repo/site.git checkout -f
+EOF
+chmod +x post-receive
