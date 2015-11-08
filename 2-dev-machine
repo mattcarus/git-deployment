@@ -1,0 +1,8 @@
+#!/bin/bash
+cd ~/workspace
+mkdir project && cd project
+git init
+git remote add live ssh://user@mydomain.com/var/repo/site.git
+git add .
+git commit -m "Project is ready"
+git push live master
